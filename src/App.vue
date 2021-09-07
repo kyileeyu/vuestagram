@@ -35,7 +35,18 @@ export default {
   data() {
     return {
       data : data,
+      click : 0,
 
+    }
+  },
+    methods:{
+    more(){
+      
+      axios.get( `https://codingapple1.github.io/vue/more${this.click}.json`)
+      .then(result => { //화살표 함수 쓸 때, this 쓰기에 좋음, 변수 하나면 괄호 생략 가능
+        this.data.push(result.data);
+        this.click++;
+      })
     }
   },
 
